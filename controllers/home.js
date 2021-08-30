@@ -23,7 +23,7 @@ const getHomeCarrousel = async (req, res) => {
 };
 
 const getHomeGridTrending = async (req, res) => {
-	let page = req.params.id;
+	let page = req.params.page;
 	let reqResult = {};
 
 	try {
