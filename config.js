@@ -1,6 +1,6 @@
 require('dotenv').config();
 const config = {
-	api_key: process.env.TMDB_API_KEY,
+	api_key: `?api_key=${process.env.TMDB_API_KEY}`,
 	port: process.env.API_PORT,
 	TMDB: {
 		appendVideo: '&append_to_response=videos',
