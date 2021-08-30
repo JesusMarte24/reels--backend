@@ -1,32 +1,36 @@
 const axios = require('axios').default;
 const { config } = require('../config');
 
-// Video
-// https://api.themoviedb.org/3/movie/{movie_id}/videos?api_key=<<api_key>>&language=en-US
-
 const getHomeCarrousel = async (req, res) => {
 	let reqResult = {};
 
 	try {
 		reqResult = await axios.get(
-			`${config.TMDB.baseURL}/trending/all/day?api_key=${process.env.TMDB_API_KEY}&language=en-US`
+			`${config.TMDB.baseURL}/trending/all/day?api_key=${config.api_key}${config.TMDB.language}`
 		);
 		reqResult = reqResult.data.results.slice(0, 10);
 	} catch (error) {
-		return res.json({
+		return res.status(500).json({
 			ok: false,
 			error,
 		});
 	}
 
-	res.json({
+	res.status(200).json({
 		ok: true,
 		reqResult,
 	});
 };
 
 const getHomeGridTrending = async (req, res) => {
-	let page = req.body.page || 1;
+	let page = req.body.page;
+	if (!page) {
+		return res.status(400).json({
+			ok: false,
+			message: 'You have to add a page number',
+		});
+	}
+
 	let reqResult = {};
 
 	try {
@@ -35,13 +39,13 @@ const getHomeGridTrending = async (req, res) => {
 		);
 		reqResult = reqResult.data.results.slice(0, 16);
 	} catch (error) {
-		return res.json({
+		return res.status(500).json({
 			ok: false,
 			error,
 		});
 	}
 
-	res.json({
+	res.status(200).json({
 		ok: true,
 		reqResult,
 	});

@@ -3,6 +3,7 @@ const {
 	getHomeCarrousel,
 	getHomeGridTrending,
 } = require('../controllers/home');
+
 const router = express.Router();
 
 router.get('/', getHomeCarrousel);
