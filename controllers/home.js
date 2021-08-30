@@ -33,7 +33,7 @@ const getHomeGridTrending = async (req, res) => {
 		reqResult = await axios.get(
 			`${config.TMDB.baseURL}/discover/movie?api_key=${process.env.TMDB_API_KEY}&language=en-US&sort_by=popularity.desc&include_adult=true&include_video=true&page=${page}`
 		);
-		reqResult.data.results.slice(0, 16);
+		reqResult = reqResult.data.results.slice(0, 16);
 	} catch (error) {
 		return res.json({
 			ok: false,
