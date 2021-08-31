@@ -20,6 +20,10 @@ const getSearchResult = async (req, res) => {
 		});
 	}
 
+	if (reqResult.length > 20) {
+		reqResult.slice(0, 20);
+	}
+
 	res.status(200).json({
 		ok: true,
 		reqResult,
