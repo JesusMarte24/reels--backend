@@ -1,4 +1,5 @@
 const express = require('express');
+const cors = require('cors');
 const { config } = require('./config.js');
 const home = require('./routes/home');
 const movie = require('./routes/movie');
@@ -7,6 +8,8 @@ const search = require('./routes/search');
 
 const app = express();
 
+//CORS
+app.use(cors());
 // parse application/x-www-form-urlencoded
 app.use(express.urlencoded({ extended: true }));
 //JSON

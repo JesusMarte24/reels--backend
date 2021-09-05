@@ -23,12 +23,12 @@ const getHomeCarrousel = async (req, res) => {
 };
 
 const getHomeGridTrending = async (req, res) => {
-	let page = req.params.page;
+	let { id: page } = req.params;
 	let reqResult = {};
 
 	try {
 		reqResult = await axios.get(
-			`${config.TMDB.baseURL}/discover/movie${config.api_key}&language=en-US&sort_by=popularity.desc&include_adult=true&include_video=true&page=${page}`
+			`${config.TMDB.baseURL}/trending/all/day${config.api_key}&page=${page}`
 		);
 		reqResult = reqResult.data.results;
 	} catch (error) {
