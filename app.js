@@ -15,6 +15,8 @@ app.use(express.urlencoded({ extended: true }));
 //JSON
 app.use(express.json());
 
+app.use(express.static('public'));
+
 //Home
 app.use('/api/home', home);
 
