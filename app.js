@@ -29,7 +29,6 @@ app.use('/api/show', show);
 //Search
 app.use('/api/search', search);
 
-app.listen(config.port, () => {
+app.listen(process.env.PORT, () => {
 	console.log(`Listening on PORT: ${config.port}`);
-	console.log(config.port);
 });
