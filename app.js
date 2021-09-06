@@ -7,14 +7,14 @@ const search = require('./routes/search');
 
 const app = express();
 
+app.use(express.static(__dirname + 'public'));
+
 //CORS
 app.use(cors());
 // parse application/x-www-form-urlencoded
 app.use(express.urlencoded({ extended: true }));
 //JSON
 app.use(express.json());
-
-app.use(express.static(__dirname + 'public'));
 
 //Home
 app.use('/api/home', home);
