@@ -3,11 +3,11 @@ const { config } = require('../config');
 
 const getHomeCarrousel = async (req, res) => {
 	let reqResult = {};
-	console.log(req);
+	console.log();
 	console.log(req.url);
 	try {
 		reqResult = await axios.get(
-			`${config.TMDB.baseURL}/trending/all/day?api_key=56b80dd83737e1202690b562f58ea210${config.TMDB.language}`
+			`${config.TMDB.baseURL}/trending/all/day${config.api_key}${config.TMDB.language}`
 		);
 		reqResult = reqResult.data.results.slice(0, 10);
 	} catch (error) {
