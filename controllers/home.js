@@ -3,7 +3,8 @@ const { config } = require('../config');
 
 const getHomeCarrousel = async (req, res) => {
 	let reqResult = {};
-
+	console.log(req);
+	console.log(req.url);
 	try {
 		reqResult = await axios.get(
 			`${config.TMDB.baseURL}/trending/all/day${config.api_key}${config.TMDB.language}`
@@ -13,6 +14,7 @@ const getHomeCarrousel = async (req, res) => {
 		return res.status(500).json({
 			ok: false,
 			message: 'Internal Server Error :v',
+			error: error,
 		});
 	}
 

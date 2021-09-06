@@ -1,6 +1,5 @@
 const express = require('express');
 const cors = require('cors');
-const { config } = require('./config.js');
 const home = require('./routes/home');
 const movie = require('./routes/movie');
 const show = require('./routes/show');
@@ -30,5 +29,5 @@ app.use('/api/show', show);
 app.use('/api/search', search);
 
 app.listen(process.env.PORT, () => {
-	console.log(`Listening on PORT: ${config.port}`);
+	console.log(`Listening on PORT: ${process.env.PORT}`);
 });
