@@ -7,7 +7,7 @@ const search = require('./routes/search');
 
 const app = express();
 
-app.use(express.static(__dirname + 'public'));
+app.use(express.static('public'));
 
 //CORS
 app.use(cors());
