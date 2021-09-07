@@ -5,6 +5,7 @@ const home = require('./routes/home');
 const movie = require('./routes/movie');
 const show = require('./routes/show');
 const search = require('./routes/search');
+const { config } = require('./config');
 
 const app = express();
 
@@ -29,10 +30,11 @@ app.use('/api/show', show);
 //Search
 app.use('/api/search', search);
 
+// Cath All Pattern to handle all routes from front-end
 app.get('/*', (req, res) => {
 	res.sendFile(path.join(__dirname, 'public/index.html'));
 });
 
-app.listen(process.env.PORT, () => {
-	console.log(`Listening on PORT: ${process.env.PORT}`);
+app.listen(config.port, () => {
+	console.log(`Listening on PORT: ${config.port}`);
 });
