@@ -1,5 +1,6 @@
 const express = require('express');
 const cors = require('cors');
+const path = require('path');
 const home = require('./routes/home');
 const movie = require('./routes/movie');
 const show = require('./routes/show');
@@ -27,6 +28,10 @@ app.use('/api/show', show);
 
 //Search
 app.use('/api/search', search);
+
+app.get('/*', (req, res) => {
+	res.sendFile(path.join(__dirname, 'public/index.html'));
+});
 
 app.listen(process.env.PORT, () => {
 	console.log(`Listening on PORT: ${process.env.PORT}`);
