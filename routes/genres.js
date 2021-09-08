@@ -8,7 +8,7 @@ const {
 const router = express.Router();
 
 router.get('/tv/:category/:page', getTvCategory);
-router.get('/movie/:category/:page', getMovieCategory);
 router.get('/movie/:genre/:page', getFilmGenre);
+router.get('/movie/category/:category/:page', getMovieCategory);
 
 module.exports = router;
