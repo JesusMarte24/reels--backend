@@ -5,6 +5,7 @@ const home = require('./routes/home');
 const movie = require('./routes/movie');
 const show = require('./routes/show');
 const search = require('./routes/search');
+const genres = require('./routes/genres');
 const { config } = require('./config');
 
 const app = express();
@@ -29,6 +30,9 @@ app.use('/api/show', show);
 
 //Search
 app.use('/api/search', search);
+
+//Genres and Categories
+app.use('/api/genres', genres);
 
 // Cath All Pattern to handle all routes from front-end
 app.get('/*', (req, res) => {
