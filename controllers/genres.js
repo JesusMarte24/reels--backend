@@ -1,33 +1,12 @@
 const { default: axios } = require('axios');
 const { config } = require('../config');
 
-const getTvPopular = async (req, res) => {
-	const { page } = req.params;
+const getTvCategory = async (req, res) => {
+	const { category, page } = req.params;
 	let reqResult = {};
 	try {
 		reqResult = await axios.get(
-			`${config.TMDB.baseURL}/tv/popular${config.api_key}${config.TMDB.language}&page=${page}`
-		);
-		reqResult = reqResult.data.results;
-	} catch (error) {
-		return res.status(500).json({
-			ok: false,
-			msg: 'Internal Server Error',
-		});
-	}
-
-	res.status(200).json({
-		ok: true,
-		reqResult,
-	});
-};
-
-const getTvTopRated = async (req, res) => {
-	const { page } = req.params;
-	let reqResult = {};
-	try {
-		reqResult = await axios.get(
-			`${config.TMDB.baseURL}/tv/top_rated${config.api_key}${config.TMDB.language}&page=${page}`
+			`${config.TMDB.baseURL}/tv/${category}${config.api_key}${config.TMDB.language}&page=${page}`
 		);
 		reqResult = reqResult.data.results;
 	} catch (error) {
@@ -96,8 +75,7 @@ const getMovieCategory = async (req, res) => {
 };
 
 module.exports = {
-	getTvPopular,
-	getTvTopRated,
+	getTvCategory,
 	getFilmGenre,
 	getMovieCategory,
 };
